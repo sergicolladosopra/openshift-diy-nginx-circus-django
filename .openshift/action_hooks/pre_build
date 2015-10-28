@@ -4,28 +4,31 @@
 # before the build step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
-PYTHON_VERSION="2.7.4"
-VIRTUALENV_VERSION="1.9.1"
+PYTHON_VERSION="3.5.0"
+VIRTUALENV_VERSION="1.11.6"
 PCRE_VERSION="8.36"
 NGINX_VERSION="1.4.0"
 MEMCACHED_VERSION="1.4.15"
 
-PYTHON_CURRENT=`${OPENSHIFT_DATA_DIR}/bin/python -c 'import sys; print(".".join(map(str, sys.version_info[:3])))'`
-if [ "$PYTHON_CURRENT" != "$PYTHON_VERSION" ]; then
-	cd $OPENSHIFT_TMP_DIR
-	wget http://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.bz2
-	tar jxf Python-${PYTHON_VERSION}.tar.bz2
-	cd Python-${PYTHON_VERSION}
-	./configure --prefix=$OPENSHIFT_DATA_DIR
-	make install
+
+# Check for Python and install if absent
+if [ ! -f $OPENSHIFT_DATA_DIR/bin/python3 ]; then
+    cd $OPENSHIFT_TMP_DIR
+    wget http://www.python.org/ftp/python/${PYTHON_VERSION}/Python-${PYTHON_VERSION}.tar.xz
+    tar Jxf Python-${PYTHON_VERSION}.tar.xz
+    cd Python-${PYTHON_VERSION}
+    ./configure --prefix=$OPENSHIFT_DATA_DIR
+    make install
 fi
-  
-if [ ! -d $OPENSHIFT_DATA_DIR/virtualenv ]; then
-	cd $OPENSHIFT_TMP_DIR
-	wget https://pypi.python.org/packages/source/v/virtualenv/virtualenv-${VIRTUALENV_VERSION}.tar.gz
-	tar zxf virtualenv-${VIRTUALENV_VERSION}.tar.gz
-	cd virtualenv-${VIRTUALENV_VERSION}
-	$OPENSHIFT_DATA_DIR/bin/python virtualenv.py $OPENSHIFT_DATA_DIR/virtualenv
+
+# Check for virtualenv and install if absent
+if [ ! -f $OPENSHIFT_DATA_DIR/bin/virtualenv ]; then
+    $OPENSHIFT_DATA_DIR/bin/pip3 install virtualenv
+fi
+
+# Check for existing virtual environment and install if there isn't one
+if [ ! -d $OPENSHIFT_HOMEDIR/python/virtenv/venv ]; then
+    $OPENSHIFT_DATA_DIR/bin/virtualenv -p $OPENSHIFT_DATA_DIR/bin/python3 $OPENSHIFT_DATA_DIR/virtualenv
 fi
 
 if [ ! -d $OPENSHIFT_DATA_DIR/nginx/sbin ]; then
