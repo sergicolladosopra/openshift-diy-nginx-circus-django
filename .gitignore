@@ -2,3 +2,4 @@
 app/app/sqlite3.db
 app/app/static/
 *.swp
+.ropeproject

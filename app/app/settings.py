@@ -12,7 +12,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-if os.environ.has_key('OPENSHIFT_POSTGRESQL_DB_HOST'):
+if 'OPENSHIFT_POSTGRESQL_DB_HOST' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -23,7 +23,7 @@ if os.environ.has_key('OPENSHIFT_POSTGRESQL_DB_HOST'):
             'PORT': os.environ.get('OPENSHIFT_POSTGRESQL_DB_PORT'),
         }
     }
-elif os.environ.has_key('OPENSHIFT_MYSQL_DB_HOST'):
+elif 'OPENSHIFT_MYSQL_DB_HOST' in os.environ:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
