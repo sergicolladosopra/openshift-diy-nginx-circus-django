@@ -8,5 +8,5 @@ export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 export LC_LANG='en_US.UTF-8'
 nohup $OPENSHIFT_DATA_DIR/nginx/sbin/nginx -c $OPENSHIFT_DATA_DIR/nginx/conf/nginx.conf > $OPENSHIFT_DIY_LOG_DIR/server.log 2>&1 &
-nohup circusd --daemon $OPENSHIFT_DATA_DIR/circus.ini > $OPENSHIFT_DIY_LOG_DIR/circus.log 2>&1 &  
+nohup circusd --daemon $OPENSHIFT_REPO_DIR/app/circus.ini > $OPENSHIFT_DIY_LOG_DIR/circus.log 2>&1 &  
 nohup $OPENSHIFT_DATA_DIR/bin/memcached -l $OPENSHIFT_INTERNAL_IP -p 18080 -d
