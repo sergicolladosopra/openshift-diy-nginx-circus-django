@@ -12,35 +12,35 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-if 'OPENSHIFT_POSTGRESQL_DB_HOST' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql_psycopg2',
-            'NAME': os.environ.get('OPENSHIFT_APP_NAME'),
-            'USER': os.environ.get('OPENSHIFT_POSTGRESQL_DB_USERNAME'),
-            'PASSWORD': os.environ.get('OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
-            'HOST': os.environ.get('OPENSHIFT_POSTGRESQL_DB_HOST'),
-            'PORT': os.environ.get('OPENSHIFT_POSTGRESQL_DB_PORT'),
-        }
+#if 'OPENSHIFT_POSTGRESQL_DB_HOST' in os.environ:
+    #DATABASES = {
+        #'default': {
+            #'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            #'NAME': os.environ.get('OPENSHIFT_APP_NAME'),
+            #'USER': os.environ.get('OPENSHIFT_POSTGRESQL_DB_USERNAME'),
+            #'PASSWORD': os.environ.get('OPENSHIFT_POSTGRESQL_DB_PASSWORD'),
+            #'HOST': os.environ.get('OPENSHIFT_POSTGRESQL_DB_HOST'),
+            #'PORT': os.environ.get('OPENSHIFT_POSTGRESQL_DB_PORT'),
+        #}
+    #}
+#elif 'OPENSHIFT_MYSQL_DB_HOST' in os.environ:
+    #DATABASES = {
+        #'default': {
+            #'ENGINE': 'django.db.backends.mysql',
+            #'NAME': os.environ.get('OPENSHIFT_APP_NAME'),
+            #'USER': os.environ.get('OPENSHIFT_MYSQL_DB_USERNAME'),
+            #'PASSWORD': os.environ.get('OPENSHIFT_MYSQL_DB_PASSWORD'),
+            #'HOST': os.environ.get('OPENSHIFT_MYSQL_DB_HOST'),
+            #'PORT': os.environ.get('OPENSHIFT_MYSQL_DB_PORT'),
+        #}
+    #}
+#else:
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(os.environ.get('OPENSHIFT_DATA_DIR', PROJECT_DIR), 'sqlite3.db'),
     }
-elif 'OPENSHIFT_MYSQL_DB_HOST' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.mysql',
-            'NAME': os.environ.get('OPENSHIFT_APP_NAME'),
-            'USER': os.environ.get('OPENSHIFT_MYSQL_DB_USERNAME'),
-            'PASSWORD': os.environ.get('OPENSHIFT_MYSQL_DB_PASSWORD'),
-            'HOST': os.environ.get('OPENSHIFT_MYSQL_DB_HOST'),
-            'PORT': os.environ.get('OPENSHIFT_MYSQL_DB_PORT'),
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(os.environ.get('OPENSHIFT_DATA_DIR', PROJECT_DIR), 'sqlite3.db'),
-        }
-    }
+}
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
