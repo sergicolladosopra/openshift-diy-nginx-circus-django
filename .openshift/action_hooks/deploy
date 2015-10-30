@@ -15,9 +15,9 @@ function substitute_variables() {
         $1 > $2
 }
 
-source $OPENSHIFT_DATA_DIR/virtualenv/bin/activate
-mkdir -p $OPENSHIFT_DATA_DIR/configs
-mkdir -p $OPENSHIFT_DATA_DIR/static/static
-mkdir -p $OPENSHIFT_DATA_DIR/static/media
-substitute_variables $OPENSHIFT_REPO_DIR/configs/nginx.conf $OPENSHIFT_DATA_DIR/nginx/conf/nginx.conf
-substitute_variables $OPENSHIFT_REPO_DIR/configs/circus.ini $OPENSHIFT_REPO_DIR/app/circus.ini
+source $OPENSHIFT_DATA_DIR'virtualenv/bin/activate'
+mkdir -p $OPENSHIFT_DATA_DIR'configs'
+mkdir -p $OPENSHIFT_DATA_DIR'static/static'
+mkdir -p $OPENSHIFT_DATA_DIR'static/media'
+substitute_variables $OPENSHIFT_REPO_DIR'configs/nginx.conf' $OPENSHIFT_DATA_DIR'nginx/conf/nginx.conf'
+substitute_variables $OPENSHIFT_REPO_DIR'configs/circus.ini' $OPENSHIFT_REPO_DIR'app/circus.ini'
