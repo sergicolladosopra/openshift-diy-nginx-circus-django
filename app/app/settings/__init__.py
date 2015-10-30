@@ -195,4 +195,4 @@ LOGGING = {
         #'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
         #'LOCATION': ':'.join([os.environ.get('OPENSHIFT_INTERNAL_IP', '127.0.0.1'), '18080']),
     #}
-#}
+#
