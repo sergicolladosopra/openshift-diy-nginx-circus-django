@@ -43,7 +43,7 @@ if [ ! -d $OPENSHIFT_DATA_DIR'nginx/sbin' ]; then
     make && make install && make clean
 fi
 
-if [ ! -f $OPENSHIFT_DATA_DIR/bin/memcached ]; then
+if [ ! -f $OPENSHIFT_DATA_DIR'bin/memcached' ]; then
     cd $OPENSHIFT_TMP_DIR
     wget http://memcached.googlecode.com/files/memcached-${MEMCACHED_VERSION}.tar.gz
     tar zxf memcached-${MEMCACHED_VERSION}.tar.gz
