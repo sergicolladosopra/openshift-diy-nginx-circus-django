@@ -1,6 +1,50 @@
 Python 3.5.0 + Nginx + Circus + Django on Openshift
 ==================================================
 
+Running on local
+================
+
+requirements
+------------
+Install virtualenvwrapper [virtualenvwrapper](https://virtualenvwrapper.readthedocs.org/en/latest/) and [pip-tools](https://github.com/nvie/pip-tools),
+create a virtualenv
+
+    pip install virtualenvwrapper
+    pip instal pip-tools
+    mkvirtualenv envName
+    workon envName
+
+In order to automatically add  required environment vars install
+[autoenv](https://github.com/kennethreitz/autoenv)
+
+Install requirements:
+
+    cd requirements
+    pip-sync common.txt dev.txt
+
+To add new requirements... add to requirements/common.in, then compile
+
+    cd requirements
+    pip compile common.in
+    #if it's only needed in dev environment add to dev.in
+    pip compile dev.in
+    pip-sync common.txt dev.txt
+
+
+
+Sync your db for the first time (In app folder )
+
+    python manage.py migrate
+    python manage.py
+
+Create superUser:
+
+    python manage.py createsuperuser
+
+run:
+
+    python manage.py runserver
+
 
 Setting up Openshift
 --------------------
