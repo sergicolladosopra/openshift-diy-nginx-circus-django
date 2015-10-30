@@ -9,7 +9,7 @@ Create the Openshift application with a DIY and Postgresql 8.4 cartridge (also w
 
     $ rhc app create <exampleapp> diy-0.1 postgresql-8.4
     $ cd <exampleapp>
-    $ git remote add upstream -m master git:/github.com/sergicolladosopra/openshift-diy-nginx-circus-django.git
+    $ git remote add upstream -m master git:/github.com/rauropesop/openshift-diy-nginx-circus-django.git
     $ git pull -s recursive -X theirs upstream master
     $ git push
 
