@@ -1,0 +1,7 @@
+Django>=1.5
+psycopg2
+Pillow
+python-memcached==1.57
+circus
+chaussette
+gevent
