@@ -4,5 +4,5 @@
 # before the deploy step.  This script gets executed directly, so it
 # could be python, php, ruby, etc.
 
-source $OPENSHIFT_DATA_DIR/virtualenv/bin/activate
+source $OPENSHIFT_DATA_DIR'virtualenv/bin/activate'
 pip install -r $OPENSHIFT_REPO_DIR'requirements.txt'
