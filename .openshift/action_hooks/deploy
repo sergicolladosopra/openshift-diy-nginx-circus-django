@@ -3,7 +3,7 @@
 # build hook has been run but before the application has been started back
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
-
+#
 function substitute_variables() {
 	sed -e "s@\$OPENSHIFT_DIY_LOG_DIR@$OPENSHIFT_DIY_LOG_DIR@" \
 		-e "s@\$OPENSHIFT_TMP_DIR@$OPENSHIFT_TMP_DIR@" \
