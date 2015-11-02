@@ -1,7 +1,11 @@
 # Django settings for app project.
 import os
+from pathlib import PurePath
 
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
+#PROJECT_DIR = PurePath(__file__).parents[2]
+
+print(PurePath(__file__).parents[1])
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
